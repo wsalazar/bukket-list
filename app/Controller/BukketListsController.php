@@ -33,7 +33,7 @@ class BukketListsController extends AppController {
 		        $this->request->data = $this->BukketList->read();		        
 		    }
 		    else 
-		    {		    	
+		    {
 		        if ($this->BukketList->saveAssociated($this->request->data))
 		        {
 		            $this->Session->setFlash('Your bukket list is up to date.');

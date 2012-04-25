@@ -4,7 +4,7 @@ class BukketList extends AppModel{
 
   public $hasMany = array(
     'BukketListItem' => array(
-        'className'   => 'BukketListItem',
+        'className'   => 'bukket_list_items',
         'foreignKey'  => 'bukket_lists_id',
         //'conditions'  => array('BukketListItem.is_archived' => 0)
         //'order'       => 'BukketListItem.order ASC'
