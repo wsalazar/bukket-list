@@ -59,24 +59,24 @@
  */
 class DATABASE_CONFIG {
 
-	// @TODO: Set up all the environments
+	// @TODO: Figure out this garbage pagoda box setup
 	public $production = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' 	     => 'tunnel.pagodabox.com',
-		'login'      => 'sumiko',
-		'password'   => 'D09A6zew',
-		'database'   => 'bukket_list',
+		'host' 	     => $_SERVER['DB1_HOST'],
+		'login'      => $_SERVER['DB1_USER'],
+		'password'   => $_SERVER['DB1_PASS'],
+		'database'   => $_SERVER['DB1_NAME'],
 		'prefix'     => ''
 	);
 
 	public $uat = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' 	     => 'tunnel.pagodabox.com',
-		'login'      => 'merideth',
-		'password'   => 'STyCI1HO',
-		'database'   => 'aleida',
+		'host' 	     => $_SERVER['DB1_HOST'],
+		'login'      => $_SERVER['DB1_USER'],
+		'password'   => $_SERVER['DB1_PASS'],
+		'database'   => $_SERVER['DB1_NAME'],
 		'prefix'     => ''
 	);
 
