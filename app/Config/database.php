@@ -57,28 +57,29 @@
  * unix_socket =>
  * For MySQL to connect via socket specify the `unix_socket` parameter instead of `host` and `port`
  */
+
 class DATABASE_CONFIG {
 
-	// @TODO: Figure out this garbage pagoda box setup
-	public $production = array(
+	// @TODO: Set up all the environments
+	/*public $production = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' 	     => $_SERVER['DB1_HOST'],
-		'login'      => $_SERVER['DB1_USER'],
-		'password'   => $_SERVER['DB1_PASS'],
-		'database'   => $_SERVER['DB1_NAME'],
+		'host' 	     => 'tunnel.pagodabox.com',
+		'login'      => 'sumiko',
+		'password'   => 'D09A6zew',
+		'database'   => 'bukket_list',
 		'prefix'     => ''
 	);
 
 	public $uat = array(
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
-		'host' 	     => $_SERVER['DB1_HOST'],
-		'login'      => $_SERVER['DB1_USER'],
-		'password'   => $_SERVER['DB1_PASS'],
-		'database'   => $_SERVER['DB1_NAME'],
+		'host' 	     => DB_HOST,
+		'login'      => 'merideth',
+		'password'   => 'STyCI1HO',
+		'database'   => 'aleida',
 		'prefix'     => ''
-	);
+	);*/
 
 	public function __construct()
 	{
@@ -87,12 +88,23 @@ class DATABASE_CONFIG {
 		if ($env == 'local'&& file_exists(dirname(__FILE__) . '/database-local.php')) {
 			$this->default = include_once('database-local.php');
 		}
+		else {
+			$this->default = array(
+				'datasource' => 'Database/Mysql',
+				'persistent' => false,
+				'host' 	     => $_SERVER['DB2_HOST'],
+				'login'      => $_SERVER['DB2_USER'],
+				'password'   => $_SERVER['DB2_PASS'],
+				'database'   => $_SERVER['DB2_NAME'],
+				'prefix'     => ''
+			);
+		}
 		
-		else if (isset($this->$env)){
+		/*else if (isset($this->$env)){
 			$this->default = $this->$env;
 		}
 		else {
 			$this->default = $this->production;
-		}
+		}*/
 	}
 }
