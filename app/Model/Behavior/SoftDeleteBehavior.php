@@ -105,7 +105,7 @@ public $runtime = array();
 * @return boolean
 */
     public function beforeDelete($model) {
-echo "2";
+//echo "2";
 //var_dump($model);
         $runtime = $this->runtime[$model->alias];
 //var_dump($runtime);
@@ -128,7 +128,7 @@ return true;
 * @return boolean
 */
 public function delete($model, $id) {
-echo "3";
+//echo "3";
     $runtime = $this->runtime[$model->alias];
     $data = array();
     $fields = $this->_normalizeFields($model);

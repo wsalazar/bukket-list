@@ -2,6 +2,8 @@
 class BukketList extends AppModel{
 	public $name = 'BukketList';
 
+  public $actsAs = array('SoftDelete'); 
+
   public $hasMany = array(
     'BukketListItem' => array(
         'className'   => 'bukket_list_items',

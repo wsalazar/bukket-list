@@ -400,6 +400,8 @@ class DboSource extends DataSource {
 		$options += array('log' => $this->fullDebug);
 
 		$t = microtime(true);
+//var_dump($sql);
+//var_dump($params);
 		$this->_result = $this->_execute($sql, $params);
 
 		if ($options['log']) {
@@ -433,7 +435,7 @@ class DboSource extends DataSource {
 		try {
 			$query = $this->_connection->prepare($sql, $prepareOptions);
 			$query->setFetchMode(PDO::FETCH_LAZY);
-			
+//var_dump($params);
 			if (!$query->execute($params)) {
 				$this->_results = $query;
 				$query->closeCursor();
@@ -587,6 +589,7 @@ class DboSource extends DataSource {
 				} else {
 					$cache = true;
 				}
+//var_dump($this->fetchAll($args[0], $args[1], array('cache' => $cache)));
 				return $this->fetchAll($args[0], $args[1], array('cache' => $cache));
 			}
 		}
@@ -645,6 +648,9 @@ class DboSource extends DataSource {
 		if ($cache && ($cached = $this->getQueryCache($sql, $params)) !== false) {
 			return $cached;
 		}
+//var_dump($sql);
+//var_dump($params);
+//var_dump($this->execute($sql, array(), $params));
 		if ($result = $this->execute($sql, array(), $params)) {
 			$out = array();
 

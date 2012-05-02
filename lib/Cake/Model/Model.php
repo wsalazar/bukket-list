@@ -645,7 +645,7 @@ class Model extends Object {
 		}
 
 		if ($this->name === null) {
-			//var_dump(get_class($this));
+//var_dump(get_class($this));
 			$this->name = (isset($name) ? $name : get_class($this));
 		}
 
@@ -718,7 +718,10 @@ class Model extends Object {
 		if ($result !== array('unhandled')) {
 			return $result;
 		}
+//var_dump($method);
+//var_dump($params);
 		$return = $this->getDataSource()->query($method, $params, $this);
+//var_dump($return);
 		return $return;
 	}
 
@@ -2198,18 +2201,25 @@ class Model extends Object {
  * @link http://book.cakephp.org/2.0/en/models/deleting-data.html
  */
 	public function delete($id = null, $cascade = true) {
+//echo "hi";
 		if (!empty($id)) {
 			$this->id = $id;
 		}
 		$id = $this->id;
-
+//var_dump($cascade);
 		if ($this->beforeDelete($cascade)) {
+//echo "bye";
 			$filters = $this->Behaviors->trigger(
 				'beforeDelete',
 				array(&$this, $cascade),
 				array('break' => true, 'breakOn' => array(false, null))
 			);
+//$filters is false;
+//var_dump($filters);
+//echo "do";
 			if (!$filters || !$this->exists()) {
+//echo "do";
+//returns false;
 				return false;
 			}
 			$db = $this->getDataSource();
@@ -2243,9 +2253,11 @@ class Model extends Object {
 				$this->afterDelete();
 				$this->_clearCache();
 				$this->id = false;
+//echo "do1";
 				return true;
 			}
 		}
+//echo "do2";
 		return false;
 	}
 
@@ -3397,6 +3409,7 @@ class Model extends Object {
  * @link http://book.cakephp.org/view/1048/Callback-Methods#beforeDelete-1054
  */
 	public function beforeDelete($cascade = true) {
+echo "what";
 		return true;
 	}
 
