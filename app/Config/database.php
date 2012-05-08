@@ -81,6 +81,26 @@ class DATABASE_CONFIG {
 		'prefix'     => ''
 	);*/
 
+public $production = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' 	     => 'mysql-shared-02.phpfog.com',
+		'login'      => 'was-829-40297',
+		'password'   => 'wP14Y25A38dy',
+		'database'   => 'bukket_phpfogapp_com',
+		'prefix'     => ''
+	);
+
+public $uat = array(
+		'datasource' => 'Database/Mysql',
+		'persistent' => false,
+		'host' 	     => 'mysql-shared-02.phpfog.com',
+		'login'      => 'was-66-40311',
+		'password'   => 'pW87o93y69pg',
+		'database'   => 'bukketuat_phpfogapp_com',
+		'prefix'     => ''
+	);
+
 	public function __construct()
 	{
 		$env = getenv('CAKE_ENV');
@@ -88,7 +108,7 @@ class DATABASE_CONFIG {
 		if ($env == 'local'&& file_exists(dirname(__FILE__) . '/database-local.php')) {
 			$this->default = include_once('database-local.php');
 		}
-		else {
+		/*else {
 			$this->default = array(
 				'datasource' => 'Database/Mysql',
 				'persistent' => false,
@@ -98,13 +118,13 @@ class DATABASE_CONFIG {
 				'database'   => $_SERVER['DB2_NAME'],
 				'prefix'     => ''
 			);
-		}
+		}*/
 		
-		/*else if (isset($this->$env)){
+		else if (isset($this->$env)){
 			$this->default = $this->$env;
 		}
 		else {
 			$this->default = $this->production;
-		}*/
+		}
 	}
 }
